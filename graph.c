@@ -1,19 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <iostream>
 #include <time.h>
+
+////////Graph Initialization
 
 typedef struct Vertex
 {
 	int coords[4];
-};
+}Vertex;
 
 //a weighted edge in a graph
 typedef struct Edge
 {
     int source, dest, weight;
-};
+}Edge;
+
 //Weightd graph structure
 typedef struct Graph
 {
@@ -22,8 +24,9 @@ typedef struct Graph
  
         // graph is represented as an array of edges. 
         // graph is undirected, so edges are bidirectional
-        struct Edge* edge;
-};
+        Edge* edge;
+}Graph;
+
 // Creates a graph with V vertices and E edges and dimenions D
 struct Graph* createGraph(int V, int E, int D)
 {
@@ -37,3 +40,21 @@ struct Graph* createGraph(int V, int E, int D)
     return graph;
 }
 
+////////Union Operation Code
+
+//a subset structure for union-find
+typedef struct subset
+{
+    int parent;
+    int rank;
+}subset;
+
+//Find a root with element k
+int find(subset subsets[], int k)
+{
+    // find root with value k, path compress finding nodes to root
+    if (subsets[k].parent != k)
+        subsets[k].parent = find(subsets, subsets[k].parent);
+ 
+    return subsets[k].parent;
+}
