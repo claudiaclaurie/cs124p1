@@ -5,11 +5,6 @@
 
 ////////Graph Initialization
 
-typedef struct Vertex
-{
-	int coords[4];
-}Vertex;
-
 //a weighted edge in a graph
 typedef struct Edge
 {
@@ -42,19 +37,46 @@ struct Graph* createGraph(int V, int E, int D)
 
 ////////Union Operation Code
 
-//a subset structure for union-find
-typedef struct subset
-{
-    int parent;
-    int rank;
-}subset;
+struct node {
+  struct node *prev;
+  int id;
+  int rank;
+};
 
-//Find a root with element k
-int find(subset subsets[], int k)
+node *makeset(int x)
 {
-    // find root with value k, path compress finding nodes to root
-    if (subsets[k].parent != k)
-        subsets[k].parent = find(subsets, subsets[k].parent);
- 
-    return subsets[k].parent;
+  node *new = (node *) malloc(sizeof(node));
+  new->id = x;
+  new->prev = new;
+  new->rank = 0;
+    
+  return new;
+}
+
+node *find(node *x)
+{
+  if (x != x->prev)
+    {
+      //path compression - otherwise, return find(x->prev)
+      x->prev = find(x->prev);
+      return x->prev;
+    }
+  return x;
+}
+
+void link(node *x, node *y)
+{
+  if (x->rank > y->rank)
+    {
+      link(y,x);
+      return;
+    }
+  if (x->rank == y->rank)
+    y->rank++;
+  x->prev = y;
+}
+
+void mst_union(node *x, node *y)
+{
+  link(find(x),find(y));
 }
