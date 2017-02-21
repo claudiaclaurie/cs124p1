@@ -1,4 +1,7 @@
-
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include "unionfind.h"
 //Disjoint Set (Union-Find)
 //Data structure to maintain a collection of disjoint sets 
 struct set {
@@ -8,9 +11,9 @@ struct set {
 };
 
 //Create a new set containting the single element x 
-node *makeset(int x)
+set *makeset(int x)
 {
-  node *new = (set *) malloc(sizeof(set));
+  set *new = (set *) malloc(sizeof(set));
   new->id = x;
   new->prev = new;
   // For Union by Rank, the rank of element x is set to 0 (only updated by link)
@@ -20,7 +23,7 @@ node *makeset(int x)
 }
 
 //return the name of the set containing the element x 
-node *find(set *x)
+set *find(set *x)
 {
   if (x != x->prev)
     {
@@ -55,3 +58,19 @@ void mst_union(set *x, set *y)
 {
   link(find(x),find(y));
 }
+
+
+int main(int argc, char **argv)
+  {
+  set *a = makeset(0);
+  set *b = makeset(1);
+  set *c = makeset(2);
+    
+  mst_union(b,a);
+  mst_union(b,c);
+    
+  printf("%d, %d\n",find(a)->id, find(a)->rank);
+  printf("%d, %d\n",find(b)->id, find(b)->rank);
+    
+  return 1;
+  }
