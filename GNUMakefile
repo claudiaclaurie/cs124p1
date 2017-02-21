@@ -1,0 +1,2 @@
+randmst.exe: graph.c unionfind.c unionfind.h
+	gcc -O3 -o randmst graph.c unionfind.c unionfind.h
