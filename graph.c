@@ -3,7 +3,6 @@
 #include <string.h>
 #include <time.h>
 #include <math.h>
-#include <rand.h>
 #include "graph.h"
 
 //randomly generate graph coordinates S
