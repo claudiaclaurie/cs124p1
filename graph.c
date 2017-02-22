@@ -56,6 +56,6 @@ int main (int argc, char **argv) {
     }
   //random seed generator   
   srand(time(NULL));
-
+} 
 
 
