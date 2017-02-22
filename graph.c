@@ -8,9 +8,27 @@
 //calculate distances 
 
 //generate graph with given parameters and return MST of graph 
+//edge structure declaration and initialization 
+typedef struct edge {
+    int start, end;
+    double weight;
+} edge;
+
+//vertex structure declaration and initialization 
+typedef struct vertex {
+    double* coordinates;
+} vertex;
+
+//graph structure declaration and initialization 
+typedef struct graph {
+    int num_v, num_e;
+    edge* edges;
+    vertex* vertices;
+} graph;
+
 
 graph* createGraph(int num_v, int num_e){
-    graph* g = malloc(sizeof(graph));
+    struct graph* g = malloc(sizeof(graph));
     g->num_v = num_v; //v is the number of vertices 
     g->num_e = num_e; //e is the number of edges 
     g->edges = malloc(sizeof(edge) * num_e); 
