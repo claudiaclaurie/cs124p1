@@ -3,6 +3,23 @@
 #include <string.h>
 #include <time.h>
 
+//randomly generate graph coordinates 
+
+//calculate distances 
+
+//generate graph with given parameters and return MST of graph 
+
+graph* createGraph(int num_v, int num_e){
+    graph* g = malloc(sizeof(graph));
+    g->num_v = num_v; //v is the number of vertices 
+    g->num_e = num_e; //e is the number of edges 
+    g->edges = malloc(sizeof(edge) * num_e); 
+    g->vertices = NULL; 
+    return g;
+
+
+}
+
 //main function that takes the correct inputs 
 int main (int argc, char **argv) {
   if (argc != 5) {
@@ -23,36 +40,4 @@ int main (int argc, char **argv) {
   srand(time(NULL));
 
 
-    
-////////Graph Initialization
-
-//a weighted edge in a graph
-typedef struct Edge
-{
-    int source, dest, weight;
-}Edge;
-
-//Weightd graph structure
-typedef struct Graph
-{
-        // V: Number of vertices, E: Number of edges, D: Number of dimensions
-        int V, E, D;
- 
-        // graph is represented as an array of edges. 
-        // graph is undirected, so edges are bidirectional
-        Edge* edge;
-}Graph;
-
-// Creates a graph with V vertices and E edges and dimenions D
-struct Graph* createGraph(int V, int E, int D)
-{
-    struct Graph* graph = (struct Graph*) malloc(sizeof(struct Graph));
-    graph->V = V;
-    graph->E = E;
-    graph->D = D;
- 
-    graph->edge = (struct Edge*) malloc(graph->E * sizeof(struct Edge));
- 
-    return graph;
-}
 
