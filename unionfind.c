@@ -6,7 +6,7 @@
 //Data structure to maintain a collection of disjoint sets 
 struct set {
   struct set *prev;
-  int id;
+  int parent;
   int rank;
 };
 
@@ -14,7 +14,7 @@ struct set {
 set *makeset(int x)
 {
   set *new = (set *) malloc(sizeof(set));
-  new->id = x;
+  new->parent = x;
   new->prev = new;
   // For Union by Rank, the rank of element x is set to 0 (only updated by link)
   new->rank = 0;
