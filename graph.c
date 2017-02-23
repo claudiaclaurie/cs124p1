@@ -21,7 +21,15 @@ graph* createGraph(int num_v, int num_e){
 
 }
 
-double getdist(vertex a, vertex b, int d){
+//set coordinates? 
+
+//generates random number from 0 to 1 
+double randnum(void) {
+    return (double) rand() / (double) ((unsigned) RAND_MAX + 1);
+
+
+//calculates euclidian distance with int d as the dimensionality 
+double getdist(vertex a, vertex b, int d){ 
     double result =0;
     switch (d){
         case 2: {
@@ -42,31 +50,11 @@ double getdist(vertex a, vertex b, int d){
     }
     return result;
 }
+
+// calculate weights?
     
 
-
-/*
-// Generates a random float from 0 to 1
-float randFloat() {
-    return (float) rand() / (float) RAND_MAX;
-}
-// Calculates distance between two points start, end with dimensionality d
-float distance(int d, float start[d], float end[d]) {
-    float sum = 0;
-
-    for (int i = 0; i < d; i++) {
-        sum += square(start[i] - end[i]);
-    }
-
-    return sqrt(sum);
-}
-
-// Calculates square of number n
-float square(float n) {
-    return n * n;
-}
-*/
-
+// graph generator 
 graph* randomGraph(int num_v, int num_d, int mode){
     //random seed generator   
     srand(time(NULL));
