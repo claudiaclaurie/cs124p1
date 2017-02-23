@@ -9,7 +9,7 @@
 
 //calculate distances 
 
-//generate graph with given parameters and return MST of graph 
+//generate graph with given parameters 
 
 graph* createGraph(int num_v, int num_e){
     struct graph* g = malloc(sizeof(graph));
@@ -22,29 +22,50 @@ graph* createGraph(int num_v, int num_e){
 }
 
 double getdist(vertex a, vertex b, int d){
-    double dist1 = pow((a->coordinates[0] - b->coordinates[0]), 2);
-    double dist2 = pow((a->coordinates[1] - b->coordinates[1]), 2);
+    double result =0;
+    switch (d){
+        case 2: {
+            result = sqrt(pow(a.coordinates[0] - b.coordinates[0]),2) 
+            + pow((a.coordinates[1] - b.coordinates[1]),2);
+            break;
+        }
+        case 3: {
+            result = sqrt(pow((a.coordinates[0] - b.coordinates[0]),2) 
+            + pow((a.coordinates[1] - b.coordinates[1]),2)+ pow((a.coordinates[2] - b.coordinates[2]), 2)) ;
+            break;
+        }
+        case 4: {
+            result = sqrt( pow((a.coordinates[0] - b.coordinates[0]), 2) + pow((a.coordinates[1] - b.coordinates[1]), 2) 
+            + pow((a.coordinates[2] - b.coordinates[2]), 2) + pow((a.coordinates[3] - b.coordinates[3]), 2) );
+            break;
+        }
+    }
+    return result;
+}
     
-    if(d == 3){
-        double dist3 = pow((a->coordinates[2] - b->coordinates[2]), 2);
-    }
-    else 
-        dist3 = 0;
-    if(d == 4) {
-        double dist4 = pow((a->coordinates[3] - b->coordinates[3]), 2);
-    }
-    else
-        dist4 = 0;
-    return sqrt(dist1 + dist2 + dist3 + dist4);
 
+
+/*
+// Generates a random float from 0 to 1
+float randFloat() {
+    return (float) rand() / (float) RAND_MAX;
+}
+// Calculates distance between two points start, end with dimensionality d
+float distance(int d, float start[d], float end[d]) {
+    float sum = 0;
+
+    for (int i = 0; i < d; i++) {
+        sum += square(start[i] - end[i]);
+    }
+
+    return sqrt(sum);
 }
 
-
-double randDouble()
-{
-    return rand() / (RAND_MAX + 1.);
+// Calculates square of number n
+float square(float n) {
+    return n * n;
 }
-
+*/
 
 graph* randomGraph(int num_v, int num_d, int mode){
     //random seed generator   
@@ -74,7 +95,7 @@ graph* randomGraph(int num_v, int num_d, int mode){
 int main(void){
     for(int n = pow(2,7); n = n*2; n<=pow(2, 17)){
         for(int num_d = 2; num_d++; num_d<=4){
-            graph* g = randomGraph()
+            graph* g = randomGraph(int num_v, int num_d, int mode)
         }
     }
 }
