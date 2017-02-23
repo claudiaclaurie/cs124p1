@@ -4,12 +4,12 @@
 #include <math.h>
 #include <time.h>
 #define RANDOM 0
-#define EUCLIDIAN 1
+#define EUCLIDEAN 1
 
 //edge structure declaration and initialization 
 typedef struct edge {
     int start, end;
-    float length;
+    float weight;
 } edge;
 
 

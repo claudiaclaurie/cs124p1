@@ -1,2 +1,2 @@
 randmst.exe: graph.c prims.c prims.h randmst.c graph.h
-	gcc -O3 -o randmst graph.c prims.c prims.h randmst.c graph.h
+	gcc -O3 -o -lm randmst graph.c prims.c prims.h randmst.c graph.h

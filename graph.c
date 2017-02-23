@@ -26,6 +26,7 @@ graph* createGraph(int num_v, int num_e){
 //generates random number from 0 to 1 
 double randnum(void) {
     return (double) rand() / (double) ((unsigned) RAND_MAX + 1);
+}
 
 
 //calculates euclidian distance with int d as the dimensionality 
@@ -33,17 +34,17 @@ double getdist(vertex a, vertex b, int d){
     double result =0;
     switch (d){
         case 2: {
-            result = sqrt(pow(a.coordinates[0] - b.coordinates[0]),2) 
+            result = sqrt(pow(a.coordinates[0] - b.coordinates[0],2)) 
             + pow((a.coordinates[1] - b.coordinates[1]),2);
             break;
         }
         case 3: {
-            result = sqrt(pow((a.coordinates[0] - b.coordinates[0]),2) 
-            + pow((a.coordinates[1] - b.coordinates[1]),2)+ pow((a.coordinates[2] - b.coordinates[2]), 2)) ;
+            result = sqrt(pow(a.coordinates[0] - b.coordinates[0],2))
+            + pow((a.coordinates[1] - b.coordinates[1]),2)+ pow(a.coordinates[2] - b.coordinates[2], 2) ;
             break;
         }
         case 4: {
-            result = sqrt( pow((a.coordinates[0] - b.coordinates[0]), 2) + pow((a.coordinates[1] - b.coordinates[1]), 2) 
+            result = sqrt( pow(a.coordinates[0] - b.coordinates[0], 2) + pow((a.coordinates[1] - b.coordinates[1]), 2) 
             + pow((a.coordinates[2] - b.coordinates[2]), 2) + pow((a.coordinates[3] - b.coordinates[3]), 2) );
             break;
         }
@@ -62,12 +63,13 @@ graph* randomGraph(int num_v, int num_d, int mode){
 
     }
     else if (mode == EUCLIDEAN){
-        double ws = [num_v];
-        double xs = [num_v];
-        double ys = [num_v];
-        double zs = [num_v];
+        double ws[num_v];
+        double xs[num_v];
+        double ys[num_v];
+        double zs[num_v];
         
-        for(int v = 0; v++; v < num_v){
+        int v;
+        for(v = 0; v++; v < num_v){
             ws[v] = rand() % RAND_MAX;
             xs[v] = rand() % RAND_MAX;
             if(num_d == 3)
@@ -81,9 +83,11 @@ graph* randomGraph(int num_v, int num_d, int mode){
 
 
 int main(void){
-    for(int n = pow(2,7); n = n*2; n<=pow(2, 17)){
-        for(int num_d = 2; num_d++; num_d<=4){
-            graph* g = randomGraph(int num_v, int num_d, int mode)
+    int n;
+    for(n = pow(2,7); n = n*2; n<=pow(2, 17)){
+        int num_d;
+        for(num_d = 2; num_d++; num_d<=4){
+            //graph* g = randomGraph(num_v, num_d, mode)
         }
     }
 }
