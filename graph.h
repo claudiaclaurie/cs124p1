@@ -8,8 +8,9 @@
 //edge structure declaration and initialization 
 typedef struct edge {
     int start, end;
-    double weight;
+    float length;
 } edge;
+
 
 //vertex structure declaration and initialization 
 typedef struct vertex {
