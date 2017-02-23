@@ -20,4 +20,13 @@ int main (int argc, char **argv) {
         printf("invalid dimension input\n");
         return 0;
     }
+
+    /* For timing caluclations
+	struct timeval t0;
+    struct timeval t1;
+    gettimeofday(&t0, 0);
+    gettimeofday(&t1, 0);
+    long elapsed = (t1.tv_sec - t0.tv_sec) * 1000000 + t1.tv_usec - t0.tv_usec;
+    printf("Operation took %ld microseconds\n", elapsed);
+    */
 }
