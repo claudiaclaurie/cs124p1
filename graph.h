@@ -6,17 +6,15 @@
 #define RANDOM 0
 #define EUCLIDEAN 1
 
+//is there a better data type???
+//vertex structure declaration and initialization 
+typedef unsigned int vertex;
+
 //edge structure declaration and initialization 
 typedef struct edge {
-    int start, end;
+    vertex* va, vb;
     float weight;
 } edge;
-
-
-//vertex structure declaration and initialization 
-typedef struct vertex {
-    double* coordinates;
-} vertex;
 
 //graph structure declaration and initialization 
 typedef struct graph {

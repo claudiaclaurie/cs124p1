@@ -13,8 +13,8 @@
 
 graph* createGraph(int num_v, int num_e){
     struct graph* g = malloc(sizeof(graph));
-    g->num_v = num_v; //v is the number of vertices 
-    g->num_e = num_e; //e is the number of edges 
+    g->num_v = num_v; //v is the number of vertices //NOT NEEDED?
+    g->num_e = num_e; //e is the number of edges    //NOT NEEDED?
     g->edges = malloc(sizeof(edge) * num_e); 
     g->vertices = NULL; 
     return g;
@@ -61,6 +61,19 @@ graph* randomGraph(int num_v, int num_d, int mode){
     srand(time(NULL));
     if(mode == RANDOM){
 
+        vertex vertices[num_v];
+        edge edges[num_v*(num_v-1)/2]; 
+
+        //connect all vertices to each other for complete graph
+        int c, d;
+        for(c=0; c++; c<num_v){
+            for(d=1; d++; d<num_v){
+                edge e;
+                //e->
+            }
+        }
+
+        graph* createGraph(num_v, );
     }
     else if (mode == EUCLIDEAN){
         double ws[num_v];
@@ -78,7 +91,6 @@ graph* randomGraph(int num_v, int num_d, int mode){
                 zs[v] = rand() % RAND_MAX;
         }
     }
-
 }
 
 
@@ -91,5 +103,4 @@ int main(void){
         }
     }
 }
-
 
