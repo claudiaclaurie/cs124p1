@@ -9,19 +9,17 @@
 
 //calculate distances 
 
-//generate graph with given parameters 
+//generate RANDOM graph with given parameters 
 
-graph* createGraph(int num_v, int num_e){
-    struct graph* g = malloc(sizeof(graph));
-    g->num_v = num_v; //v is the number of vertices //NOT NEEDED?
-    g->num_e = num_e; //e is the number of edges    //NOT NEEDED?
-    g->edges = malloc(sizeof(edge) * num_e); 
+graphR* createGraphR(int num_v){
+    struct graphR* g = malloc(sizeof(graph));
+    g->num_v = num_v; //v is the number of vertices
+    //complete graph has v(v-1)/2 edges
+    g->edges = malloc(sizeof(edge)* num_v*(num_v-1)/2); 
     g->vertices = NULL; 
     return g;
 
 }
-
-//set coordinates? 
 
 //generates random number from 0 to 1 
 double randnum(void) {
@@ -52,47 +50,76 @@ double getdist(vertex a, vertex b, int d){
     return result;
 }
 
-// calculate weights?
-    
 
-// graph generator 
-graph* randomGraph(int num_v, int num_d, int mode){
+// RANDOM graphR generator 
+graphR* rGraphR(int num_v){
     //random seed generator   
     srand(time(NULL));
-    if(mode == RANDOM){
+    graphR* G = createGraph(num_v);
 
-        vertex vertices[num_v];
-        edge edges[num_v*(num_v-1)/2]; 
+    //connect all vertices to each other for complete graph
+    int c, d;
+    int edgecount = 0
+    for(c=0; c++; c<num_v){
+        //add each vertice to graph
+        vertex va;
+        G->vertices[c] = va;
 
-        //connect all vertices to each other for complete graph
-        int c, d;
-        for(c=0; c++; c<num_v){
-            for(d=1; d++; d<num_v){
-                edge e;
-                //e->
-            }
-        }
+        for(d=1; d++; d<num_v){
+            float weight = randnum();
+            vertex vb;
 
-        graph* createGraph(num_v, );
-    }
-    else if (mode == EUCLIDEAN){
-        double ws[num_v];
-        double xs[num_v];
-        double ys[num_v];
-        double zs[num_v];
-        
-        int v;
-        for(v = 0; v++; v < num_v){
-            ws[v] = rand() % RAND_MAX;
-            xs[v] = rand() % RAND_MAX;
-            if(num_d == 3)
-                ys[v] = rand() % RAND_MAX;
-            if(num_d == 4)
-                zs[v] = rand() % RAND_MAX;
+            //create edge, set weight and vertices
+            edge e;
+            e->weight = weight;
+            e->va = *va;
+            e->vb = *vb;
+
+            //add edge to graph
+            G->edges[edgecount] = e;
+            edgecount++;
         }
     }
+    return G;
 }
 
+// EUCLIDEAN graphE generator 
+graphE* rGraphE(int num_v, int num_d){
+    //random seed generator   
+    srand(time(NULL));
+    graphE g;
+
+    double ws[num_v];
+    double xs[num_v];
+    double ys[num_v];
+    double zs[num_v];
+    
+    int v;
+    for(v = 0; v++; v < num_v){
+        ws[v] = rand() % RAND_MAX;
+        xs[v] = rand() % RAND_MAX;
+        if(num_d == 3)
+            ys[v] = rand() % RAND_MAX;
+        if(num_d == 4)
+            zs[v] = rand() % RAND_MAX;
+    }
+
+    g->ws = ws;
+    g->xs = xs;
+    g->ys = ys;
+    g->zs = zs;
+
+    return g;
+}
+
+graph* randomGraph(int num_v, int num_d, int mode){
+    if(mode == RANDOM){
+
+    }
+    else if(mode == EUCLIDEAN){
+        
+    }
+}
 
 int main(void){
     int n;

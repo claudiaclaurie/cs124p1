@@ -16,10 +16,24 @@ typedef struct edge {
     float weight;
 } edge;
 
-//graph structure declaration and initialization 
-typedef struct graph {
-    int num_v, num_e;
+//Random graph structure
+typedef struct graphR {
+	int num_v;
     edge* edges;
     vertex* vertices;
+} graphE;
+
+//Euclidean graph structure
+typedef struct graphE{
+	double ws[num_v];
+    double xs[num_v];
+    double ys[num_v];
+    double zs[num_v];
+} graphG;
+
+//graph structure declaration and initialization 
+typedef struct union graph {
+    graphE R;
+    graphG E;
 } graph;
 
